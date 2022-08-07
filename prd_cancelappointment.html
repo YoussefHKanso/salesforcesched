@@ -37,7 +37,7 @@ var queryString = window.location.search;
 var urlParams = new URLSearchParams(queryString); 
 var Email = urlParams.get('Email'); //URL param name	
 	
-    $Lightning.use("c:CancelAppointment",    // name of the Lightning app
+    $Lightning.use("c:SalesforceScheduler",    // name of the Lightning app
         function() {                  // Callback once framework and app loaded
             $Lightning.createComponent(
                 "lightning:flow", // top-level component of your app
