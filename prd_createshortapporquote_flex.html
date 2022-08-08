@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Salesforce Scheduler</title>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<style>
+        .slds-visual-picker_vertical .slds-visual-picker__figure {
+            height: inherit !important;
+        }
+
+        .runtime_appointmentbookingFlowLocation .slds-visual-picker_vertical {
+            display: inline-flex !important;
+        }
+</style>
+</head>
+<body> 
+<H1>Scheduler Validation</H1>
+<H3>Just for test purpose</H3>
+<div id="lexcontainer">
+<p>Lightning Component mentioned in the Script is invoked from here</p>
+</div>
+
+<script src="https://pepper-money.secure.force.com/salesforcescheduler/lightning/lightning.out.js"></script>
+	
+	<script>
+var queryString = window.location.search; 
+var urlParams = new URLSearchParams(queryString); 
+var Email = urlParams.get('Email'); //URL param name 
+var IntegrationExternalId = urlParams.get('IntegrationExternalId'); //URL param name 
+var ShortAppDecision = urlParams.get('ShortAppDecision'); //URL param name
+var LoanAmount = urlParams.get('LoanAmount'); //URL param name 
+
+    
+		
+    $Lightning.use("c:SalesforceScheduler",
+        function() {                  // Callback once framework and app load
+            $Lightning.createComponent(
+                "lightning:flow",    // top-level component of your app
+                { },    // attributes to set on the component when created
+                "lexcontainer",    // the DOM location to insert the component
+                function(component) {            // API name of the Flow
+		var inputVariables = [
+                        {
+                           name : 'Email',
+                           type : 'String',
+                           value : Email
+                        },
+                        {
+                           name : 'FirstName',
+                           type : 'String',
+                           value : 'Youssef Create Lead 3'
+                        },
+                        {
+                           name : 'LastName',
+                           type : 'String',
+                           value : 'Integration 3'
+                        },
+                        {
+                           name : 'HasNivoApp_Downloaded',
+                           type : 'Boolean',
+                           value : 'True'
+                        },
+                        {
+                           name : 'LeadSource',
+                           type : 'String',
+                           value : 'Website'
+                        },
+                        {
+                            name : 'LoanTerm',
+                            type : 'Number',
+                            value : '4'
+                         },
+                        {
+                           name : 'LoanAmount',
+                           type : 'Currency',
+                           value : LoanAmount
+                        },
+                        {
+                           name : 'LenderFee',
+                           type : 'Currency',
+                           value : '2'
+                        },
+                        {
+                           name : 'LoanRate',
+                           type : 'Number',
+                           value : '12'
+                        },
+                        {
+                           name : 'MobilePhone',
+                           type : 'String',
+                           value : '12345678'
+                        },
+                        {
+                           name : 'MonthlyRepayments',
+                           type : 'Currency',
+                           value : '800'
+                        },
+                        {
+                           name : 'MortgageBalance1',
+                           type : 'Currency',
+                           value : '43000'
+                        },
+                        {
+                           name : 'MortgageBalance2',
+                           type : 'Currency',
+                           value : '30000'
+                        },
+                        {
+                           name : 'OutstandingBalance',
+                           type : 'Currency',
+                           value : '234567'
+                        },
+                        {
+                           name : 'Phone',
+                           type : 'String',
+                           value : '98765432'
+                        },
+                        {
+                           name : 'PropertyValue',
+                           type : 'Currency',
+                           value : '400000'
+                        },
+                        {
+                           name : 'TotalRepayable',
+                           type : 'Currency',
+                           value : '4000'
+                        },
+                        {
+                           name : 'ExistingCustomer',
+                           type : 'Boolean',
+                           value : 'True'
+                        },
+                        {
+                           name : 'Existing2ndChargeMortgage',
+                           type : 'Boolean',
+                           value : 'True'
+                        },
+                        {
+                           name : 'LoanCalculatorProductSelection',
+                           type : 'String',
+                           value : '2 Year Fixed'
+                        },
+                        {
+                           name : 'HomeownerStatus',
+                           type : 'Boolean',
+                           value : 'True'
+                        },
+                        {
+                           name : 'ShortAppDecision',
+                           type : 'String',
+                           value : ShortAppDecision
+                        },
+                        {
+                           name : 'IntegrationExternalId',
+                           type : 'String',
+                           value : IntegrationExternalId
+                        }
+						
+                     ];
+                    component.startFlow("PepperMoney_LoanCalculatorOrShortApp", inputVariables);
+                }
+            );
+        },    'https://pepper-money.secure.force.com/salesforcescheduler'  // Site endpoint
+    );
+</script>
+      
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>	
+	</body>
+    
+	
+</html>
